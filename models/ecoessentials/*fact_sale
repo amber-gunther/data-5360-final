@@ -1,0 +1,25 @@
+--only half sure what i'm even doing. order_line has a lot of fields we wanted to be in this fact table, so i took everything out of order_line that i could, then found the others in order. only one join so yay but also now i'm anxious that i didn't do it right
+--worker_id and warehouse_id not present anywhere. didn't we decide that this is data we don't have yet?
+
+{{ config(
+    materialized = 'table',
+    database = 'group3project',
+    schema = 'ecoessentials_dw_source'
+    )
+}}
+
+SELECT
+ol.order_line_id,
+ol.order_id,
+--worker_id,
+--warehouse_id,
+ol.campaign_id,
+ol.product_id,
+o.customer_id,
+o.order_timestamp,
+ol.discount,
+ol.price_after_discoutn,
+ol.quantity
+FROM {{ source('ecoessentials_landing', 'order_line') }} ol
+INNER JOIN {{ source('ecoessentials_landing', 'order') }} o
+  on ol.order_id = o.order_id
