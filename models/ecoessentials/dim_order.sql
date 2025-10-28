@@ -1,7 +1,7 @@
 {{ config(
     materialized = 'table',
     database = 'group3project',
-    schema = 'ecoessentials_dw_source'
+    schema = 'final_part_2'
     )
 }}
 
@@ -10,4 +10,4 @@ order_id as orderkey,
 order_id,
 customer_id,
 order_timestamp
-FROM {{ source('ecoessentials_landing', 'order') }}
+FROM {{ source('ecoessentials_landing_2', 'order') }}

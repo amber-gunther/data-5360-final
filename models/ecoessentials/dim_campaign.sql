@@ -1,7 +1,7 @@
 {{ config(
     materialized = 'table',
     database = 'group3project',
-    schema = 'ecoessentials_dw_source'
+    schema = 'final_part_2'
     )
 }}
 

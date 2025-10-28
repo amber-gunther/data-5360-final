@@ -1,7 +1,7 @@
 {{ config(
     materialized = 'table',
     database = 'group3project',
-    schema = 'ecoessentials_dw_source'
+    schema = 'final_part_2'
     )
 }}
 
@@ -11,4 +11,4 @@ product_id,
 product_type,
 product_name,
 price
-FROM {{ source('ecoessentials_landing', 'product') }}
+FROM {{ source('ecoessentials_landing_2', 'product') }}

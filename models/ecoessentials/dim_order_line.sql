@@ -1,7 +1,7 @@
 {{ config(
     materialized = 'table',
     database = 'group3project',
-    schema = 'ecoessentials_dw_source'
+    schema = 'final_part_2'
     )
 }}
 
@@ -15,4 +15,4 @@ quantity,
 discount,
 promotional_campaign,
 price_after_discount
-FROM {{ source('ecoessentials_landing', 'order_line') }}
+FROM {{ source('ecoessentials_landing_2', 'order_line') }}
