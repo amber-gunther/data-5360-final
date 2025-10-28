@@ -1,0 +1,9 @@
+- created the connection in fivetran. when i synced it it put sales_landing_transactional_db in my database, with tables:
+  - customer
+  - order
+  - order_line
+  - product
+  - promotional_campaign
+- will need tp update sources to reflect this, don't have the brain power to think about that rn tho
+- created facts based on our diagram. a lot of fields were already present in one table from each data source
+- not sure if we need to create a stage (i think he only did for this assignment bc there was some parsing needed?). hopefully not bc i will cry if we do
