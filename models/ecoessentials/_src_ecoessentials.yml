@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: ecoessentials_landing
+    database: group3project
+    schema: ecoessentials_dw_source
+    tables: 
+      - name: salesforce_marketing_emails
