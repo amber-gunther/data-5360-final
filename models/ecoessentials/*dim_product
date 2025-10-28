@@ -1,0 +1,14 @@
+{{ config(
+    materialized = 'table',
+    database = 'group3project',
+    schema = 'ecoessentials_dw_source'
+    )
+}}
+
+SELECT
+product_id as productkey,
+product_id,
+product_type,
+product_name,
+price
+FROM {{ source('ecoessentials_landing', 'product') }}
