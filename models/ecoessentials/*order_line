@@ -1,0 +1,18 @@
+{{ config(
+    materialized = 'table',
+    database = 'group3project',
+    schema = 'ecoessentials_dw_source'
+    )
+}}
+
+SELECT
+order_line_id as orderkey,
+order_line_id,
+order_id,
+product_id,
+campaign_id,
+quantity,
+discount,
+promotional_campaign,
+price_after_discount
+FROM {{ source('ecoessentials_landing', 'order_line') }}
