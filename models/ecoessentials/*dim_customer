@@ -1,0 +1,19 @@
+{{ config(
+    materialized = 'table',
+    database = 'group3project',
+    schema = 'ecoessentials_dw_source'
+    )
+}}
+
+SELECT
+customer_id as customerkey,
+customer_id,
+customer_first_name,
+customer_last_name,
+customer_phone,
+customer_address,
+customer_city,
+customer_state,
+customer_zip,
+customer_country
+FROM {{ source('ecoessentials_landing', 'customer') }}
