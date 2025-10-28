@@ -1,9 +1,8 @@
 {{ config(
     materialized = 'table',
     database = 'group3project',
-    schema = 'ecoessentials_dw_source'
-    )
-}}
+    schema = 'final_part_2'
+    ) }}
 
 SELECT
 customer_id as customerkey,
@@ -16,4 +15,4 @@ customer_city,
 customer_state,
 customer_zip,
 customer_country
-FROM {{ source('ecoessentials_landing', 'customer') }}
+FROM {{ source('ecoessentials_landing_2', 'customer') }}

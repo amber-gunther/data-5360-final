@@ -6,3 +6,12 @@ sources:
     schema: ecoessentials_dw_source
     tables: 
       - name: salesforce_marketing_emails
+  - name: ecoessentials_landing_2
+    database: group3project
+    schema: ecoessentials_transactional_db
+    tables: 
+      - name: promotional_campaign
+      - name: customer
+      - name: order
+      - name: order_line
+      - name: product

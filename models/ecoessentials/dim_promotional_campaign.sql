@@ -1,7 +1,7 @@
 {{ config(
     materialized = 'table',
     database = 'group3project',
-    schema = 'ecoessentials_dw_source'
+    schema = 'final_part_2'
     )
 }}
 
@@ -10,4 +10,4 @@ campaign_id as campaign_key,
 campaign_id,
 campaign_name,
 campaign_discount
-FROM {{ source('ecoessentials_landing', 'promotional_campaign') }}
+FROM {{ source('ecoessentials_landing_2', 'promotional_campaign') }}
