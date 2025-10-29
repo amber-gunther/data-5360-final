@@ -4,22 +4,27 @@
 {{ config(
     materialized = 'table',
     database = 'group3project',
-    schema = 'ecoessentials_dw_source'
+    schema = 'final_part_2'
     )
 }}
 
 SELECT
-ol.order_line_id,
-ol.order_id,
---worker_id,
---warehouse_id,
-ol.campaign_id,
-ol.product_id,
-o.customer_id,
+ol.order_line_key,
+o.orders_key,
+c.campaign_key,
+p.product_key,
+cu.customer_key,
 o.order_timestamp,
 ol.discount,
-ol.price_after_discoutn,
+ol.price_after_discount,
 ol.quantity
-FROM {{ source('ecoessentials_landing', 'order_line') }} ol
-INNER JOIN {{ source('ecoessentials_landing', 'order') }} o
-  on ol.order_id = o.order_id
+FROM {{ ref('dim_order_line') }} ol
+INNER JOIN {{ ref('dim_orders') }} o
+    on ol.order_id = o.order_id
+INNER JOIN {{ ref('dim_campaign') }} c
+    on c.campaign_key = ol.campaign_id
+INNER JOIN {{ ref('dim_product') }} p 
+    on p.product_id = ol.product_id
+INNER JOIN {{ ref('dim_customer') }} cu  
+    on cu.customer_id = o.customer_id
+

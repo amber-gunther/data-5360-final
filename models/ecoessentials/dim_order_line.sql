@@ -6,7 +6,7 @@
 }}
 
 SELECT
-order_line_id as orderkey,
+order_line_id as order_line_key,
 order_line_id,
 order_id,
 product_id,

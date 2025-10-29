@@ -12,6 +12,6 @@ sources:
     tables: 
       - name: promotional_campaign
       - name: customer
-      - name: order
+      - name: orders
       - name: order_line
       - name: product
