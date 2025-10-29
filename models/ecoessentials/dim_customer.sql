@@ -15,8 +15,10 @@ c.customer_city,
 c.customer_state,
 c.customer_zip,
 c.customer_country,
+s.emaileventid, 
 s.subscriberemail as email,
 s.subscriberid
 FROM {{ source('ecoessentials_landing_2', 'customer') }} c
 inner join {{ source('ecoessentials_landing', 'salesforce_marketing_emails') }} s
     on s.customerid = c.customer_id
+    where s.customerid != 'NULL'

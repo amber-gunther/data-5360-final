@@ -9,10 +9,20 @@ SELECT
 c.campaign_key,
 p.product_key,
 cu.customer_key,
-d.time_key,
-ev.event_key,
-FROM {{ ref('dim_customer') }} cu
-inner join {{ ref('dim_campaign') }} c 
-    on c.customer_id = cu.customer_id
-inner join {{ ref('dim_user')}} u
-    on u.customer_id = cu.customer_id
+--d.date_key,
+cu.subscriberid as subscriber_key,
+e.event_key,
+FROM {{ ref('dim_campaign') }} c
+inner join {{ref('dim_order_line')}} ol 
+    on c.campaignid = ol.campaign_id
+inner join {{ ref('dim_product')}} p
+    on p.product_id = ol.product_id
+inner join {{ ref('dim_orders') }} o 
+    on o.order_id = ol.order_id
+inner join {{ ref('dim_customer') }} cu 
+    on cu.customer_id = o.customer_id
+inner join {{ ref('dim_event')}} e
+    on e.emaileventid = cu.emaileventid
+inner join {{ref('dim_date')}} d
+    on e.eventtimestamp = d.date_key
+    where d.date_key = left(e.eventtimestamp, 10)
