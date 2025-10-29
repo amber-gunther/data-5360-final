@@ -6,8 +6,8 @@
 }}
 
 SELECT
-order_id as orderkey,
+order_id as orders_key,
 order_id,
 customer_id,
 order_timestamp
-FROM {{ source('ecoessentials_landing_2', 'order') }}
+FROM {{ source('ecoessentials_landing_2', 'orders') }}

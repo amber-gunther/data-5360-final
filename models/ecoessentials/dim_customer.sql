@@ -5,14 +5,18 @@
     ) }}
 
 SELECT
-customer_id as customerkey,
-customer_id,
-customer_first_name,
-customer_last_name,
-customer_phone,
-customer_address,
-customer_city,
-customer_state,
-customer_zip,
-customer_country
-FROM {{ source('ecoessentials_landing_2', 'customer') }}
+c.customer_id as customer_key,
+c.customer_id,
+c.customer_first_name,
+c.customer_last_name,
+c.customer_phone,
+c.customer_address,
+c.customer_city,
+c.customer_state,
+c.customer_zip,
+c.customer_country,
+s.subscriberemail as email,
+s.subscriberid
+FROM {{ source('ecoessentials_landing_2', 'customer') }} c
+inner join {{ source('ecoessentials_landing', 'salesforce_marketing_emails') }} s
+    on s.customerid = c.customer_id

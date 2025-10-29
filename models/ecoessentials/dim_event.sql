@@ -6,7 +6,7 @@
 }}
 
 SELECT
-emaileventid as eventid, 
+emaileventid as event_key, 
 emaileventid,
 eventtimestamp,
 eventtype
