@@ -10,8 +10,14 @@ sources:
     database: group3project
     schema: ecoessentials_transactional_db
     tables: 
-      - name: promotional_campaign
       - name: customer
       - name: orders
       - name: order_line
       - name: product
+      - name: event
+      - name: email
+      - name: sale
+      - name: promotional_campaign
+      - name: campaign
+      - name: user
+

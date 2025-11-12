@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: dim_campaign
+    columns:
+      - name: campaign_key
+        tests:
+          - not_null
+  - name: dim_customer
+    columns:
+      - name: customer_key
+        tests:
+          - not_null
+  - name: dim_date
+    columns:
+      - name: date_key
+        tests:
+          - not_null
+  - name: dim_event
+    columns:
+      - name: eventtype
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - "OPEN"
+                - "CLICK"
+                - "SENT"
+
+  - name: dim_orders
+    columns:
+      - name: orders_key
+        tests:
+          - not_null
+  - name: dim_order_line
+    columns:
+      - name: order_line_key
+        tests:
+          - not_null
+  - name: dim_product
+    columns:
+      - name: product_key
+        tests:
+          - unique
+  - name: dim_promotional_campaign
+    columns:
+      - name: campaign_key
+        tests:
+          - not_null
+  - name: dim_user
+    columns:
+      - name: customer_key
+        tests:
+          - not_null
+  - name: fact_email
+    columns:
+      - name: campaign_key
+        tests:
+          - relationships:
+              field: campaign_key
+              to: ref('dim_campaign')
+  - name: fact_sale
+    columns:
+      - name: campaign_key
+        tests:
+          - relationships:
+              field: campaign_key
+              to: ref('dim_campaign')
